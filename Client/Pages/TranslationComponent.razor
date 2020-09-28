@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.SignalR.Client
+@using VonageDotnetTranslator.Shared
+@inject NavigationManager NavigationManager
+@implements IDisposable
+
+<h3>Translation</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Uuid</th>
+            <th>Language Spoken</th>
+            <th>Language Translated To</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var translation in _translations.Values)
+        {
+            <tr>
+                <td>@translation.UUID</td>
+                <td>@translation.LanguageSpoken</td>
+                <td>@translation.LanguageTranslated</td>
+                <td>@translation.Text</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private Dictionary<string, Translation> _translations = new Dictionary<string, Translation>();
+    private HubConnection _hubConnection;
+    protected override async Task OnInitializedAsync()
+    {
+        _hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/TranslationHub"))
+            .Build();
+        _hubConnection.On<Translation>("receiveTranslation", (translation) =>
+        {
+            if (_translations.ContainsKey(translation.UUID))
+            {
+                _translations[translation.UUID].Text += translation.Text;
+            }
+            else
+            {
+                _translations.Add(translation.UUID, translation);
+            }
+            StateHasChanged();
+        });
+        await _hubConnection.StartAsync();
+    }
+    public bool IsConnected => _hubConnection.State == HubConnectionState.Connected;
+
+    public void Dispose()
+    {
+        _ = _hubConnection.DisposeAsync();
+    }
+}
