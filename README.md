@@ -15,7 +15,7 @@ If you're new to Vonage, you can [sign up for a Vonage API account](https://dash
 * You'll need a Vonage API Account. If you don't have one, you can sign up for one [here](https://dashboard.nexmo.com/sign-up). Take note of your accounts Api Key, Api Secret, and the number that comes with it.
 * You'll need an Azure Speech Resource - you can create one following the steps [here](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview#create-the-azure-resource) Pull the region and key value from the `Keys and Enpoint` tab on your resource.
 * The latest [.NET Core SDK installed](https://dotnet.microsoft.com/download)
-* Visual Studio or Visual Studio Code. I will be using Visual Studio 2019 for this demo
+* [Visual Studio](https://aka.ms/vs) or [Visual Studio Code](https://aka.ms/vscode). I will be using [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) for this demo
 * This assumes that you've already procured a number, and linked it to an application that is pointing at a valid endpoint for Voange to reach. See the Voice API tab of our [Setting webhook endpoints](https://developer.nexmo.com/concepts/guides/webhooks#setting-webhook-endpoints) docs for more details
 
 ## Configure the app
