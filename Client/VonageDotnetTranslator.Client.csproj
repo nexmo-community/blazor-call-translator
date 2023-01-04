@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.1" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-preview.1.21103.6" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetcore.SignalR.client" Version="3.1.8" />
     <PackageReference Include="System.Net.Http.Json" Version="3.2.0" />
   </ItemGroup>
